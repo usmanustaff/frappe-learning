@@ -7,7 +7,7 @@ def get_clusters():
 @frappe.whitelist()
 def create_cluster(name, country):
     doc = frappe.get_doc({
-        "doctype": "demoCluster",
+        "doctype": "democluster",
         "name": name,
         "country": country
     })
@@ -16,12 +16,12 @@ def create_cluster(name, country):
 
 @frappe.whitelist()
 def update_cluster(cluster_name, country):
-    doc = frappe.get_doc("demoCluster", cluster_name)
+    doc = frappe.get_doc("democluster", cluster_name)
     doc.country = country
     doc.save()
     return doc
 
 @frappe.whitelist()
 def delete_cluster(cluster_name):
-    frappe.delete_doc("demoCluster", cluster_name)
+    frappe.delete_doc("democluster", cluster_name)
     return {"message": "Cluster deleted"}
